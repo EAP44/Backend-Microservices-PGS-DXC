@@ -1,0 +1,4 @@
+{
+  "name": "file-service",
+  "main": "src/index.js"
+}

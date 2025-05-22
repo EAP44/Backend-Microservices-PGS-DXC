@@ -1,0 +1,51 @@
+
+version: '3.8'
+services:
+  auth-service:
+    build:
+      context: ./services/auth-service
+    ports:
+      - "8081:8080"
+
+  evaluation-service:
+    build:
+      context: ./services/evaluation-service
+    ports:
+      - "8082:8080"
+
+  intern-management:
+    build:
+      context: ./services/intern-management
+    ports:
+      - "3001:3000"
+
+  file-service:
+    build:
+      context: ./services/file-service
+    ports:
+      - "3002:3000"
+
+  notification-service:
+    build:
+      context: ./services/notification-service
+    ports:
+      - "3003:3000"
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: interns
+    ports:
+      - "3306:3306"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
