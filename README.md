@@ -1,6 +1,6 @@
 # PSGS-DXC
 
-# 🧩 Backend Microservices Template
+# ⚙️ Backend
 
 This is a backend architecture based on microservices. It includes multiple services built using **Java Spring Boot** and **Node.js (Express.js)**, and leverages **Docker** and **Docker Compose** for orchestration.
 
@@ -9,61 +9,69 @@ This is a backend architecture based on microservices. It includes multiple serv
 ## 📦 Project Structure
 
 backend-microservices-template/
-├── services/
-│ ├── auth-service/ # Spring Boot (Java) - Authentication
-│ ├── evaluation-service/ # Spring Boot (Java) - Intern Evaluation
-│ ├── intern-management/ # Node.js (Express) - Intern CRUD management
-│ ├── file-service/ # Node.js (Express) - File Upload/Download
-│ └── notification-service/ # Node.js (Express) - Email/SMS Notifications
-├── docker-compose.yml # Docker Compose orchestration
-├── .env # Environment variables (example)
-└── README.md # Project documentation
+- ├── services/
+- │ ├── auth-service/ # Spring Boot (Java) - Authentication
+- │ ├── evaluation-service/ # Spring Boot (Java) - Intern Evaluation
+- │ ├── intern-management/ # Node.js (Express) - Intern CRUD management
+- │ ├── file-service/ # Node.js (Express) - File Upload/Download
+- │ └── notification-service/ # Node.js (Express) - Email/SMS Notifications
+- ├── docker-compose.yml # Docker Compose orchestration
+- ├── .env # Environment variables (example)
+- └── README.md # Project documentation
 
 
 
 ---
 
-## 🧱 Technologies Used
+### 🧱 Technologies Used
 
-| Technology       | Purpose                          |
-|------------------|----------------------------------|
-| **Spring Boot**  | Java-based microservices         |
-| **Express.js**   | Lightweight Node.js services     |
-| **MongoDB**      | NoSQL database                   |
-| **MySQL**        | Relational database              |
-| **RabbitMQ**     | Messaging between services       |
-| **Docker**       | Containerization                 |
-| **Docker Compose** | Multi-container orchestration  |
+<div align="center">
+    <img src="https://skillicons.dev/icons?i=nodejs,javascript,express,mongodb,java,rabbitmq,mysql,npm,spring,docker,github" /><br>
+</div>
+
+
+| Technology        | Description                                |
+|-------------------|--------------------------------------------|
+| **Spring Boot**   | Java-based framework for microservices     |
+| **Express.js**    | Fast and minimalist Node.js web framework  |
+| **MongoDB**       | NoSQL document database                    |
+| **MySQL**         | Relational database for structured data    |
+| **RabbitMQ**      | Message broker for async service comms     |
+| **Docker**        | Containerization of services               |
+| **Docker Compose**| Multi-service orchestration                |
 
 ---
 
 ## 🚀 Services Overview
 
-### 1. `auth-service`
-- Handles user registration, login, JWT authentication
-- Built using **Spring Boot**
+### 🔐 `auth-service`
+- Handles **user authentication**, **JWT token generation**, and **role management**.
+- Developed using **Spring Boot**.
 
-### 2. `evaluation-service`
-- Manages evaluations of interns
-- Built using **Spring Boot**
+### 📊 `evaluation-service`
+- Manages intern **evaluations**, scores, and review history.
+- Built using **Spring Boot**.
 
-### 3. `intern-management`
-- CRUD operations for interns
-- Built using **Express.js**
+### 👨‍💼 `intern-management`
+- Provides **CRUD operations** for intern profiles.
+- Developed using **Express.js (Node.js)**.
 
-### 4. `file-service`
-- Handles file uploads/downloads
-- Built using **Express.js**
+### 📁 `file-service`
+- Handles **file uploads**, downloads, and storage.
+- Built with **Express.js (Node.js)**.
 
-### 5. `notification-service`
-- Sends notifications via email or SMS
-- Built using **Express.js**
+### 📢 `notification-service`
+- Sends **email** and **SMS notifications**.
+- Developed with **Express.js**.
 
 ---
 
 ## 🐳 Running the Project with Docker
 
-Make sure you have **Docker** and **Docker Compose** installed.
+### Prerequisites:
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
+### 🧪 Start all services:
 ```bash
 docker-compose up --build
