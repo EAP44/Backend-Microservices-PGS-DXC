@@ -2,6 +2,10 @@
 
 # ⚙️ Backend
 
+<div align="center">
+    <img src="https://skillicons.dev/icons?i=nodejs,javascript,express,mongodb,java,rabbitmq,mysql,npm,spring,docker,github" /><br>
+</div>
+
 This is a backend architecture based on microservices. It includes multiple services built using **Java Spring Boot** and **Node.js (Express.js)**, and leverages **Docker** and **Docker Compose** for orchestration.
 
 ---
@@ -24,10 +28,6 @@ backend-microservices-template/
 ---
 
 ### 🧱 Technologies Used
-
-<div align="center">
-    <img src="https://skillicons.dev/icons?i=nodejs,javascript,express,mongodb,java,rabbitmq,mysql,npm,spring,docker,github" /><br>
-</div>
 
 
 | Technology        | Description                                |
