@@ -12,7 +12,7 @@ This is a backend architecture based on microservices. It includes multiple serv
 
 ## 📦 Project Structure
 
-backend-microservices-template/
+backend-microservices/
 - ├── services/
 - │ ├── auth-service/ # Spring Boot (Java) - Authentication
 - │ ├── evaluation-service/ # Spring Boot (Java) - Intern Evaluation
