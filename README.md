@@ -10,7 +10,7 @@ This is a backend architecture based on microservices. It includes multiple serv
 
 ---
 
-## 📦 Project Structure
+## 📁 Project Structure
 
 backend-microservices/
 - ├── services/
