@@ -30,6 +30,14 @@ services:
       context: ./services/notification-service
     ports:
       - "3003:3000"
+    environment:
+      - PORT=3003
+      - MONGO_URI=mongodb://mongo:27017/notification-service
+      # - JWT_SECRET=jwt_secret
+      # - VAPID_PUBLIC_KEY=public_key
+      # - VAPID_PRIVATE_KEY=private_key
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo
