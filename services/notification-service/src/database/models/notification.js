@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const notificationSchema = new mongoose.Schema({
+const notificationSchema = new Schema({
   encadrantId: { type: String, required: true },
   encadrantEmail: { type: String, required: true },
   stagiaireName: { type: String, required: true },
@@ -9,3 +10,4 @@ const notificationSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Notification", notificationSchema);
+

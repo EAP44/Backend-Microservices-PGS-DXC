@@ -28,25 +28,21 @@ services:
     build:
       context: ./services/intern-management
     ports:
-      - "3001:3000"
+      - "3000:3000"
     depends_on:
-      - mysql
+      - mongo
 
   file-service:
     build:
       context: ./services/file-service
     ports:
-      - "3002:3000"
+      - "3001:3000"
 
   notification-service:
     build:
       context: ./services/notification-service
     ports:
-      - "3003:3000"
-    environment:
-      - PORT=3003
-      - MONGO_URI=mongodb://mongo:27017/notification-service
-      - AMQP_URL=amqp://rabbitmq
+      - "3002:3000"
     depends_on:
       - mongo
       - rabbitmq
