@@ -25,7 +25,7 @@ const StagiaireSchema = new Schema(
     niveau: {type: String,required: true,},
     dateDebut: {type: Date,required: true,},
     dateFin: {type: Date,required: true,},
-    encadrantId: {type: String,required: true,},
+    encadrantId: {type: String},
     status: {type: String,
       enum: ["En attente", "En cours", "Terminé", "Annulé"],
       default: "En attente",
