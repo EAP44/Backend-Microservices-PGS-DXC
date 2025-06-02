@@ -1,69 +1,79 @@
 
 version: '3.8'
-
+###################################################################################
+###################################################################################
 services:
+###################################################################################
+###################################################################################
   auth-service:
     build:
       context: ./services/auth-service
+    container_name: auth-service
     ports:
-      - "8081:8080"
+      - "5000:5000"
     depends_on:
-      - mysql
-    environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_NAME=interns
-      - DB_USER=root
-      - DB_PASSWORD=
-
+      - mongo
+    env_file:
+      - .env
+    restart: always
+###################################################################################
+###################################################################################
   evaluation-service:
     build:
       context: ./services/evaluation-service
     ports:
-      - "8082:8080"
+      - "5050:5000"
     depends_on:
-      - mysql
-
+      - mongo
+    env_file:
+      - .env
+    restart: always
+###################################################################################
+###################################################################################
   intern-management:
     build:
       context: ./services/intern-management
     ports:
-      - "3000:3000"
+      - "3010:3000"
     depends_on:
       - mongo
-
+    env_file:
+      - .env
+    restart: always
+###################################################################################
+###################################################################################
   file-service:
     build:
       context: ./services/file-service
     ports:
-      - "3001:3000"
-
+      - "3020:3000"
+    env_file:
+      - .env
+    restart: always
+###################################################################################
+###################################################################################
   notification-service:
     build:
       context: ./services/notification-service
     ports:
-      - "3002:3000"
+      - "3030:3000"
     depends_on:
       - mongo
       - rabbitmq
-
+    env_file:
+      - .env
+    restart: always
+###################################################################################
+###################################################################################
   mongo:
     image: mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-
-  mysql:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: interns
-    ports:
-      - "3307:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-
+    restart: always
+###################################################################################
+###################################################################################
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -72,8 +82,7 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
-
+###################################################################################
+###################################################################################
 volumes:
   mongo-data:
-  mysql-data:
-
