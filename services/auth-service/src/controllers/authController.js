@@ -80,37 +80,55 @@ const forgotPassword = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
-const register = async (req, res) => {
-  const { email, password, role } = req.body;
-
+//--------------------------------------------------------------------------------------------- for test
+const addManyUsers = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(409).json({ message: 'User already exists.' });
+    if (!Array.isArray(req.body)) {
+      return res.status(400).json({ message: 'Expected an array of users.' });
     }
 
-    const user = await User.create({ email, password, role });
+    const createdUsers = [];
 
-    const token = generateToken(user);
+    for (const userData of req.body) {
+      const { email, password, role } = userData;
+      
+      if (!email || !password || !role) {
+        return res.status(400).json({ message: 'Missing email, password, or role.' });
+      }
+
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        continue;
+      }
+      const user = await User.create({ email, password, role });
+      const token = generateToken(user);
+
+      createdUsers.push({
+        user,
+        token,
+        role: user.role,
+      });
+    }
+
+    if (createdUsers.length === 0) {
+      return res.status(409).json({ message: 'All provided users already exist.' });
+    }
 
     return res.status(201).json({
-      user : user,
-      token,
-      role: user.role,
+      message: 'Users registered successfully.',
+      users: createdUsers,
     });
+
   } catch (err) {
-    console.error('Register error:', err);
-    if (err.name === 'ValidationError') {
-      return res.status(400).json({ message: err.message });
-    }
-    res.status(500).json({ message: 'Server error' });
+    console.error('Add users error:', err.message);
+    res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
+//--------------------------------------------------------------------------------------------- for test
 
 module.exports = {
   login,
   logout,
   forgotPassword,
-  register,
+  addManyUsers,
 };

@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "RH1",
+    "email": "ayoub.rh@dxc.com",
+    "password": "pass1234",
+    "role": "rh"
+  },
+  {
+    "_id": "E1",
+    "email": "tariq.enc@dxc.com",
+    "password": "secret789",
+    "role": "enc"
+  },
+  {
+    "_id": "RH2",
+    "email": "layla.rh@dxc.com",
+    "password": "laylaPass1",
+    "role": "rh"
+  },
+  {
+    "_id": "E4",
+    "email": "nadir.enc@dxc.com",
+    "password": "nadir@456",
+    "role": "enc"
+  },
+  {
+    "_id": "RH3",
+    "email": "fatima.rh@dxc.com",
+    "password": "fatima12",
+    "role": "rh"
+  },
+  {
+    "_id": "E6",
+    "email": "youssef.enc@dxc.com",
+    "password": "youssef1",
+    "role": "enc"
+  },
+  {
+    "_id": "RH4",
+    "email": "siham.rh@dxc.com",
+    "password": "siham321",
+    "role": "rh"
+  },
+  {
+    "_id": "E8",
+    "email": "mehdi.enc@dxc.com",
+    "password": "mehdi456",
+    "role": "enc"
+  },
+  {
+    "_id": "RH5",
+    "email": "salma.rh@dxc.com",
+    "password": "salma789",
+    "role": "rh"
+  },
+  {
+    "_id": "E10",
+    "email": "khalid.enc@dxc.com",
+    "password": "khalidpass",
+    "role": "enc"
+  }
+]

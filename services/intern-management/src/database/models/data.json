@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "E1",
+    "nom": "Mansouri",
+    "prenom": "Tariq",
+    "email": "tariq.enc@dxc.com",
+    "phoneNumber": "0601234567",
+    "specialite": "Big Data",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E2",
+    "nom": "Amrani",
+    "prenom": "Sara",
+    "email": "sara.amrani@dxc.com",
+    "phoneNumber": "0602345678",
+    "specialite": "Mathématiques",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E3",
+    "nom": "Bennani",
+    "prenom": "Layla",
+    "email": "layla.rh@dxc.com",
+    "phoneNumber": "0603456789",
+    "specialite": "Gestion RH",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E4",
+    "nom": "Karimi",
+    "prenom": "Nadir",
+    "email": "nadir.enc@dxc.com",
+    "phoneNumber": "0604567890",
+    "specialite": "Informatique",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E5",
+    "nom": "Kabbaj",
+    "prenom": "Fatima",
+    "email": "fatima.rh@dxc.com",
+    "phoneNumber": "0605678901",
+    "specialite": "Communication",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E6",
+    "nom": "El Idrissi",
+    "prenom": "Youssef",
+    "email": "youssef.enc@dxc.com",
+    "phoneNumber": "0606789012",
+    "specialite": "Systèmes embarqués",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E7",
+    "nom": "Belkacem",
+    "prenom": "Siham",
+    "email": "siham.rh@dxc.com",
+    "phoneNumber": "0607890123",
+    "specialite": "Ressources humaines",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E8",
+    "nom": "Zahiri",
+    "prenom": "Mehdi",
+    "email": "mehdi.enc@dxc.com",
+    "phoneNumber": "0608901234",
+    "specialite": "Développement Web",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E9",
+    "nom": "Fadili",
+    "prenom": "Salma",
+    "email": "salma.rh@dxc.com",
+    "phoneNumber": "0609012345",
+    "specialite": "Gestion de projet",
+    "stagiairesEncadresIds": []
+  },
+  {
+    "_id": "E10",
+    "nom": "Hamzaoui",
+    "prenom": "Khalid",
+    "email": "khalid.enc@dxc.com",
+    "phoneNumber": "0610123456",
+    "specialite": "Cloud Computing",
+    "stagiairesEncadresIds": []
+  }
+]
