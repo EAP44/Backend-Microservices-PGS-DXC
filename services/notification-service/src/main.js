@@ -25,7 +25,7 @@ app.use('/api', notificationRoutes);
     });
 
     server.listen(PORT, () => {
-      console.log(`Notification Service running on http://localhost:${PORT}`);
+      console.log(`Notification Service running on http://localhost:3030`);
     });
 
   } catch (error) {

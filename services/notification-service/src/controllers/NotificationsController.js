@@ -16,7 +16,7 @@ async function publishNotification(req, res) {
     stagiaireEmail,
   }))(req.body);
 
-  const notification = new Notification(allowedFields);
+const notification = new Notification(allowedFields);
 
   await notification.save();
   const connection = await amqp.connect(AMQP_URL);
@@ -35,7 +35,7 @@ const encadrantNotification = async (req, res) => {
     const notifications = await Notification.find({ encadrantId }).sort({
       createdAt: -1,
     });
-    res.json(notifications);
+    res.status(201).json({ data: notifications ,id: encadrantId });
   } catch (err) {
     res.status(500).json({ message: "Erreur serveur" });
   }

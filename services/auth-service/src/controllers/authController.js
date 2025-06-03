@@ -95,6 +95,7 @@ const register = async (req, res) => {
     const token = generateToken(user);
 
     return res.status(201).json({
+      user : user,
       token,
       role: user.role,
     });

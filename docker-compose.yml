@@ -18,16 +18,16 @@ services:
     restart: always
 ###################################################################################
 ###################################################################################
-  evaluation-service:
-    build:
-      context: ./services/evaluation-service
-    ports:
-      - "5050:5000"
-    depends_on:
-      - mongo
-    env_file:
-      - .env
-    restart: always
+  # evaluation-service:
+  #   build:
+  #     context: ./services/evaluation-service
+  #   ports:
+  #     - "5050:5000"
+  #   depends_on:
+  #     - mongo
+  #   env_file:
+  #     - .env
+  #   restart: always
 ###################################################################################
 ###################################################################################
   intern-management:
@@ -42,14 +42,14 @@ services:
     restart: always
 ###################################################################################
 ###################################################################################
-  file-service:
-    build:
-      context: ./services/file-service
-    ports:
-      - "3020:3000"
-    env_file:
-      - .env
-    restart: always
+  # file-service:
+  #   build:
+  #     context: ./services/file-service
+  #   ports:
+  #     - "3020:3000"
+  #   env_file:
+  #     - .env
+  #   restart: always
 ###################################################################################
 ###################################################################################
   notification-service:
