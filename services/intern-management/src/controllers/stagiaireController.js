@@ -31,6 +31,7 @@ exports.createStagiaire = async (req, res, next) => {
       return res.status(400).json({ error: error.details[0].message });
     }
     const {
+      _id,
       nom,
       prenom,
       email,
@@ -41,6 +42,8 @@ exports.createStagiaire = async (req, res, next) => {
       dateDebut,
       dateFin,
       encadrantId,
+      commentaires,
+      documents
     } = value;
 
     if (!encadrantId) {
@@ -55,6 +58,7 @@ exports.createStagiaire = async (req, res, next) => {
     const encadrantEmail = encadrant.email;
 
     const newStagiaire = new Stagiaire({
+      _id,
       nom,
       prenom,
       email,
@@ -74,6 +78,7 @@ exports.createStagiaire = async (req, res, next) => {
     await newStagiaire.save();
 
     try {
+      console.log("testtestetettst????????????????????????????????????????1");
       await axios.post(
         "http://localhost:3030/api/notify",
         {
@@ -86,12 +91,14 @@ exports.createStagiaire = async (req, res, next) => {
           headers: { "Content-Type": "application/json" },
         }
       );
+      console.log("testtestetettst????????????????????????????????????????2");
     } catch (notifyErr) {
       console.error(
         "[createStagiaire] La requête POST /api/notify a échoué:",
         notifyErr.message || notifyErr.toString()
       );
     }
+    console.log("testtestetettst????????????????????????????????????????3");
     return res.status(201).json(newStagiaire);
   } catch (err) {
     if (err.code === 11000 && err.keyPattern && err.keyPattern.email) {

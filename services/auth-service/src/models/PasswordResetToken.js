@@ -3,7 +3,7 @@ const crypto = require('crypto');
 
 const passwordResetTokenSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     required: true,
     ref: 'User',
   },

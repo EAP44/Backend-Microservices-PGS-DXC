@@ -2,10 +2,7 @@ const jwt = require('jsonwebtoken');
 const TokenBlacklist = require('../models/TokenBlacklist');
 const { secret } = require('../config/jwt-config');
 
-/**
- *   - Verify JWT
- *   - if token blacklisted
- */
+
 const protect = async (req, res, next) => {
   let token;
   if (

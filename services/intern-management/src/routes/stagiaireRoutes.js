@@ -15,14 +15,14 @@ const { authMiddleware } = require('../middlewares/authMiddleware')
 
 router.get('/Stagiaires', authMiddleware, getAllStagiaires);
 router.get('/Stagiaire/:id', authMiddleware, getStagiaireById);
-router.post('/Stagiaire', authMiddleware, createStagiaire);
+router.post('/Stagiaire', createStagiaire);
 router.put('/Stagiaire/:id', authMiddleware, updateStagiaire);
-router.delete('/Stagiaire/:id', authMiddleware, deleteStagiaire);
+router.delete('/Stagiaire/:id', deleteStagiaire);
 
 //---------------------------------------------------------------------------- for test
-router.get('/test/Encadrants', authMiddleware, getAllEncadrants);
-router.get('/test/Encadrant/:id', authMiddleware, getEncadrantById);
-router.post('/test/Encadrant', authMiddleware, createManyEncadrants);
+router.get('/test/Encadrants', getAllEncadrants);
+router.get('/test/Encadrant/:id', getEncadrantById);
+router.post('/test/Encadrant', createManyEncadrants);
 //---------------------------------------------------------------------------- for test
 
 module.exports = router;

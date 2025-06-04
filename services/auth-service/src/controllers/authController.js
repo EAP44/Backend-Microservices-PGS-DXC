@@ -76,8 +76,7 @@ const forgotPassword = async (req, res) => {
       .status(200)
       .json({ message: 'Password reset link sent to email.' });
   } catch (err) {
-    console.error('Forgot password error:', err);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
 //--------------------------------------------------------------------------------------------- for test
@@ -90,9 +89,9 @@ const addManyUsers = async (req, res) => {
     const createdUsers = [];
 
     for (const userData of req.body) {
-      const { email, password, role } = userData;
+      const { _id, email, password, role } = userData;
       
-      if (!email || !password || !role) {
+      if (!_id || !email || !password || !role) {
         return res.status(400).json({ message: 'Missing email, password, or role.' });
       }
 
@@ -100,7 +99,7 @@ const addManyUsers = async (req, res) => {
       if (existingUser) {
         continue;
       }
-      const user = await User.create({ email, password, role });
+      const user = await User.create({_id, email, password, role });
       const token = generateToken(user);
 
       createdUsers.push({
