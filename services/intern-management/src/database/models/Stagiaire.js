@@ -33,7 +33,7 @@ const StagiaireSchema = new Schema(
     conventionValidee: {type: Boolean,default: false,
     },
     documents: [DocumentSchema],
-    commentaires: [CommentaireSuiviSchema],
+    commentaires: [ ],
   },
   { timestamps: true }
 );
