@@ -20,9 +20,9 @@ router.put('/Stagiaire/:id', authMiddleware, updateStagiaire);
 router.delete('/Stagiaire/:id', deleteStagiaire);
 
 //---------------------------------------------------------------------------- for test
-// router.get('/test/Encadrants', getAllEncadrants);
-// router.get('/test/Encadrant/:id', getEncadrantById);
-// router.post('/test/Encadrant', createManyEncadrants);
+router.get('/test/Encadrants', getAllEncadrants);
+router.get('/test/Encadrant/:id', getEncadrantById);
+router.post('/test/Encadrant', createManyEncadrants);
 //---------------------------------------------------------------------------- for test
 
 module.exports = router;
