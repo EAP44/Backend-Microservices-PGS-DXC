@@ -6,24 +6,34 @@ const {
   createStagiaire,
   updateStagiaire,
   deleteStagiaire,
-
+  softDelete,
+  restore,
+  deleted,
+  stagiaires,
   getAllEncadrants,
   getEncadrantById,
   createManyEncadrants,
 } = require('../controllers/stagiaireController');
-const { authMiddleware } = require('../middlewares/authMiddleware')
 
-router.get('/Stagiaires', authMiddleware, getAllStagiaires);
-router.get('/Stagiaire/:id', authMiddleware, getStagiaireById);
+const { authMiddleware } = require('../middlewares/authMiddleware');
+
+// === Stagiaire Routes ===
+router.get('/Stagiaires', getAllStagiaires);
+router.get('/Stagiaire/:id', getStagiaireById);
 router.post('/Stagiaire', createStagiaire);
-router.put('/Stagiaire/:id', authMiddleware, updateStagiaire);
+router.put('/Stagiaire/:id', updateStagiaire);
 router.delete('/Stagiaire/:id', deleteStagiaire);
 
-//---------------------------------------------------------------------------- for test
+router.patch('/Stagiaire/soft-delete/:id', softDelete);
+router.patch('/Stagiaire/restore/:id', restore);
+router.get('/Stagiaires/deleted', deleted);
+router.get('/Stagiaires/list', stagiaires);
+
+// === Encadrant Routes ===
 router.get('/test/Encadrants', getAllEncadrants);
 router.get('/test/Encadrant/:id', getEncadrantById);
 router.post('/test/Encadrant', createManyEncadrants);
-//---------------------------------------------------------------------------- for test
 
 module.exports = router;
+
 
