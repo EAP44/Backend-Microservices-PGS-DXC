@@ -46,7 +46,7 @@ backend-microservices/
 
 ### 🔐 `auth-service`
 - Handles **user authentication**, **JWT token generation**, and **role management**.
-- Developed using **Spring Boot**.
+- Developed using **Express.js (Node.js)**.
 
 ### 📊 `evaluation-service`
 - Manages intern **evaluations**, scores, and review history.
