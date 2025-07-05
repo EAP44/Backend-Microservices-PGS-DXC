@@ -13,6 +13,9 @@ const {
   getAllEncadrants,
   getEncadrantById,
   createManyEncadrants,
+  getDashboardStats,
+  getPendingInterns,
+  updateStagiaireStatus,
 } = require('../controllers/stagiaireController');
 
 const { authMiddleware } = require('../middlewares/authMiddleware');
@@ -33,6 +36,12 @@ router.get('/Stagiaires/list', stagiaires);
 router.get('/test/Encadrants', getAllEncadrants);
 router.get('/test/Encadrant/:id', getEncadrantById);
 router.post('/test/Encadrant', createManyEncadrants);
+
+//__________________________________________________________________________ new
+router.get("/dashboard/stats", getDashboardStats);
+router.get("/stagiaires/en-attente", getPendingInterns);
+router.patch("/stagiaire/update-status", updateStagiaireStatus);
+
 
 module.exports = router;
 

@@ -488,3 +488,74 @@ exports.createManyEncadrants = async (req, res, next) => {
     next(err);
   }
 };
+
+//__________________________________________________________________________ new
+
+exports.getDashboardStats = async (req, res, next) => {
+  try {
+    const totalInterns = await Stagiaire.countDocuments({ isDeleted: { $ne: true } });
+    const totalSupervisors = await Encadrant.countDocuments();
+    const activeInternships = await Stagiaire.countDocuments({
+      status: "Complète",
+      isDeleted: { $ne: true },
+    });
+    const pendingInterns = await Stagiaire.countDocuments({
+      status: "En attente",
+      isDeleted: { $ne: true },
+    });
+
+    res.json({
+      totalInterns,
+      totalSupervisors,
+      activeInternships,
+      pendingInterns,
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur lors de la récupération des statistiques.', error });
+  }
+};
+
+exports.getPendingInterns = async (req, res, next) => {
+  try {
+    const pendingInterns = await Stagiaire.find({
+      status: "En attente",
+      isDeleted: { $ne: true },
+    });
+    res.json(pendingInterns);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur lors de la récupération des stagiaires en attente.", error });
+  }
+};
+
+
+exports.updateStagiaireStatus = async (req, res, next) => {
+  try {
+    const { id, status } = req.body;
+
+    if (!id) {
+      return res.status(400).json({ error: "L'identifiant du stagiaire est requis." });
+    }
+
+    if (!["Complète", "En attente", "Annulé"].includes(status)) {
+      return res.status(400).json({ error: "Statut invalide. Les statuts valides sont : Complète, En attente, Annulé." });
+    }
+
+    const updatedStagiaire = await Stagiaire.findOneAndUpdate(
+      { _id: id },
+      { status },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedStagiaire) {
+      return res.status(404).json({ error: "Stagiaire non trouvé avec l'identifiant fourni." });
+    }
+
+    res.json({
+      message: "Statut mis à jour avec succès.",
+      stagiaire: updatedStagiaire
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
