@@ -3,60 +3,386 @@
     "_id": "RH1",
     "email": "ayoub.rh@dxc.com",
     "password": "pass1234",
-    "role": "rh"
+    "role": "rh",
+    "nom": "El Aouadi",
+    "prenom": "Ayoub",
+    "phoneNumber": "0611122233"
   },
   {
     "_id": "E1",
     "email": "tariq.enc@dxc.com",
     "password": "secret789",
-    "role": "enc"
+    "role": "enc",
+    "nom": "Mansouri",
+    "prenom": "Tariq",
+    "phoneNumber": "0601234567",
+    "specialite": "Big Data"
   },
   {
     "_id": "RH2",
     "email": "layla.rh@dxc.com",
     "password": "laylaPass1",
-    "role": "rh"
+    "role": "rh",
+    "nom": "El Hamdi",
+    "prenom": "Layla",
+    "phoneNumber": "0611223344"
   },
   {
     "_id": "E4",
     "email": "nadir.enc@dxc.com",
     "password": "nadir@456",
-    "role": "enc"
+    "role": "enc",
+    "nom": "Bennani",
+    "prenom": "Nadir",
+    "phoneNumber": "0604567891",
+    "specialite": "Cybersécurité"
   },
   {
     "_id": "RH3",
     "email": "fatima.rh@dxc.com",
     "password": "fatima12",
-    "role": "rh"
+    "role": "rh",
+    "nom": "Alaoui",
+    "prenom": "Fatima",
+    "phoneNumber": "0666778899"
   },
   {
     "_id": "E6",
     "email": "youssef.enc@dxc.com",
     "password": "youssef1",
-    "role": "enc"
+    "role": "enc",
+    "nom": "El Amrani",
+    "prenom": "Youssef",
+    "phoneNumber": "0607891234",
+    "specialite": "DevOps"
   },
   {
     "_id": "RH4",
     "email": "siham.rh@dxc.com",
     "password": "siham321",
-    "role": "rh"
+    "role": "rh",
+    "nom": "Kabbaj",
+    "prenom": "Siham",
+    "phoneNumber": "0677889900"
   },
   {
     "_id": "E8",
     "email": "mehdi.enc@dxc.com",
     "password": "mehdi456",
-    "role": "enc"
+    "role": "enc",
+    "nom": "El Idrissi",
+    "prenom": "Mehdi",
+    "phoneNumber": "0612345678",
+    "specialite": "IA & ML"
   },
   {
     "_id": "RH5",
     "email": "salma.rh@dxc.com",
     "password": "salma789",
-    "role": "rh"
+    "role": "rh",
+    "nom": "Boukhriss",
+    "prenom": "Salma",
+    "phoneNumber": "0655443322"
   },
   {
     "_id": "E10",
     "email": "khalid.enc@dxc.com",
     "password": "khalidpass",
-    "role": "enc"
+    "role": "enc",
+    "nom": "Ouakrim",
+    "prenom": "Khalid",
+    "phoneNumber": "0619876543",
+    "specialite": "Développement Web"
+  },
+  {
+    "_id": "RH11",
+    "email": "karim.rh@dxc.com",
+    "password": "karim123",
+    "role": "rh",
+    "nom": "Karim",
+    "prenom": "Othman",
+    "phoneNumber": "0610101010"
+  },
+  {
+    "_id": "E11",
+    "email": "amine.enc@dxc.com",
+    "password": "aminePass1",
+    "role": "enc",
+    "nom": "Amrani",
+    "prenom": "Amine",
+    "phoneNumber": "0601112223",
+    "specialite": "Cloud Computing"
+  },
+  {
+    "_id": "RH12",
+    "email": "nadia.rh@dxc.com",
+    "password": "nadia456",
+    "role": "rh",
+    "nom": "Nadia",
+    "prenom": "El Fassi",
+    "phoneNumber": "0610202020"
+  },
+  {
+    "_id": "E12",
+    "email": "yassine.enc@dxc.com",
+    "password": "yassine789",
+    "role": "enc",
+    "nom": "Yassine",
+    "prenom": "Bouziane",
+    "phoneNumber": "0602223334",
+    "specialite": "Sécurité Réseaux"
+  },
+  {
+    "_id": "RH13",
+    "email": "imane.rh@dxc.com",
+    "password": "imane987",
+    "role": "rh",
+    "nom": "Imane",
+    "prenom": "Bouazzaoui",
+    "phoneNumber": "0610303030"
+  },
+  {
+    "_id": "E13",
+    "email": "sami.enc@dxc.com",
+    "password": "samiPass2",
+    "role": "enc",
+    "nom": "Sami",
+    "prenom": "El Idrissi",
+    "phoneNumber": "0603334445",
+    "specialite": "Intelligence Artificielle"
+  },
+  {
+    "_id": "RH14",
+    "email": "laila.rh@dxc.com",
+    "password": "laila321",
+    "role": "rh",
+    "nom": "Laila",
+    "prenom": "Zahraoui",
+    "phoneNumber": "0610404040"
+  },
+  {
+    "_id": "E14",
+    "email": "mehdi.enc2@dxc.com",
+    "password": "mehdi1234",
+    "role": "enc",
+    "nom": "Mehdi",
+    "prenom": "El Khatib",
+    "phoneNumber": "0604445556",
+    "specialite": "Data Science"
+  },
+  {
+    "_id": "RH15",
+    "email": "souad.rh@dxc.com",
+    "password": "souad456",
+    "role": "rh",
+    "nom": "Souad",
+    "prenom": "El Amrani",
+    "phoneNumber": "0610505050"
+  },
+  {
+    "_id": "E15",
+    "email": "hassan.enc@dxc.com",
+    "password": "hassan789",
+    "role": "enc",
+    "nom": "Hassan",
+    "prenom": "Boujida",
+    "phoneNumber": "0605556667",
+    "specialite": "DevOps"
+  },
+  {
+    "_id": "RH16",
+    "email": "malika.rh@dxc.com",
+    "password": "malika123",
+    "role": "rh",
+    "nom": "Malika",
+    "prenom": "El Idrissi",
+    "phoneNumber": "0610606060"
+  },
+  {
+    "_id": "E16",
+    "email": "sara.enc@dxc.com",
+    "password": "saraPass3",
+    "role": "enc",
+    "nom": "Sara",
+    "prenom": "Kabbaj",
+    "phoneNumber": "0606667778",
+    "specialite": "Cyber Sécurité"
+  },
+  {
+    "_id": "RH17",
+    "email": "younes.rh@dxc.com",
+    "password": "younes456",
+    "role": "rh",
+    "nom": "Younes",
+    "prenom": "Boukhari",
+    "phoneNumber": "0610707070"
+  },
+  {
+    "_id": "E17",
+    "email": "adil.enc@dxc.com",
+    "password": "adil789",
+    "role": "enc",
+    "nom": "Adil",
+    "prenom": "Rachidi",
+    "phoneNumber": "0607778889",
+    "specialite": "Développement Web"
+  },
+  {
+    "_id": "RH18",
+    "email": "hana.rh@dxc.com",
+    "password": "hana123",
+    "role": "rh",
+    "nom": "Hana",
+    "prenom": "El Haddad",
+    "phoneNumber": "0610808080"
+  },
+  {
+    "_id": "E18",
+    "email": "omar.enc@dxc.com",
+    "password": "omarPass4",
+    "role": "enc",
+    "nom": "Omar",
+    "prenom": "Lahmar",
+    "phoneNumber": "0608889990",
+    "specialite": "Big Data"
+  },
+  {
+    "_id": "RH19",
+    "email": "nawal.rh@dxc.com",
+    "password": "nawal456",
+    "role": "rh",
+    "nom": "Nawal",
+    "prenom": "Mansouri",
+    "phoneNumber": "0610909090"
+  },
+  {
+    "_id": "E19",
+    "email": "mohamed.enc@dxc.com",
+    "password": "mohamed789",
+    "role": "enc",
+    "nom": "Mohamed",
+    "prenom": "El Ghazali",
+    "phoneNumber": "0609990001",
+    "specialite": "Intelligence Artificielle"
+  },
+  {
+    "_id": "RH20",
+    "email": "samira.rh@dxc.com",
+    "password": "samira123",
+    "role": "rh",
+    "nom": "Samira",
+    "prenom": "El Amrani",
+    "phoneNumber": "0611001010"
+  },
+  {
+    "_id": "E20",
+    "email": "ayman.enc@dxc.com",
+    "password": "aymanPass5",
+    "role": "enc",
+    "nom": "Ayman",
+    "prenom": "Bouhdaoui",
+    "phoneNumber": "0610111223",
+    "specialite": "Cloud Computing"
+  },
+  {
+    "_id": "E21",
+    "email": "youssef2.enc@dxc.com",
+    "password": "youssef2Pass",
+    "role": "enc",
+    "nom": "Youssef",
+    "prenom": "El Amrani",
+    "phoneNumber": "0611222334",
+    "specialite": "Data Science"
+  },
+  {
+    "_id": "E22",
+    "email": "hicham.enc@dxc.com",
+    "password": "hicham123",
+    "role": "enc",
+    "nom": "Hicham",
+    "prenom": "Boukhari",
+    "phoneNumber": "0612333445",
+    "specialite": "DevOps"
+  },
+  {
+    "_id": "E23",
+    "email": "fatima2.enc@dxc.com",
+    "password": "fatima2pass",
+    "role": "enc",
+    "nom": "Fatima",
+    "prenom": "Zahraoui",
+    "phoneNumber": "0613444556",
+    "specialite": "Cyber Sécurité"
+  },
+  {
+    "_id": "E24",
+    "email": "samir.enc@dxc.com",
+    "password": "samir789",
+    "role": "enc",
+    "nom": "Samir",
+    "prenom": "El Haddad",
+    "phoneNumber": "0614555667",
+    "specialite": "Big Data"
+  },
+  {
+    "_id": "E25",
+    "email": "leila.enc@dxc.com",
+    "password": "leila1234",
+    "role": "enc",
+    "nom": "Leila",
+    "prenom": "El Ghazali",
+    "phoneNumber": "0615666778",
+    "specialite": "Intelligence Artificielle"
+  },
+  {
+    "_id": "E26",
+    "email": "ahmed.enc@dxc.com",
+    "password": "ahmedpass",
+    "role": "enc",
+    "nom": "Ahmed",
+    "prenom": "Bouazzaoui",
+    "phoneNumber": "0616777889",
+    "specialite": "Développement Web"
+  },
+  {
+    "_id": "E27",
+    "email": "salma2.enc@dxc.com",
+    "password": "salma2pass",
+    "role": "enc",
+    "nom": "Salma",
+    "prenom": "Boujida",
+    "phoneNumber": "0617888990",
+    "specialite": "Cloud Computing"
+  },
+  {
+    "_id": "E28",
+    "email": "mohamed2.enc@dxc.com",
+    "password": "mohamed2pass",
+    "role": "enc",
+    "nom": "Mohamed",
+    "prenom": "El Khatib",
+    "phoneNumber": "0618999001",
+    "specialite": "Data Science"
+  },
+  {
+    "_id": "E29",
+    "email": "salim.enc@dxc.com",
+    "password": "salim123",
+    "role": "enc",
+    "nom": "Salim",
+    "prenom": "El Idrissi",
+    "phoneNumber": "0619000112",
+    "specialite": "DevOps"
+  },
+  {
+    "_id": "E30",
+    "email": "hanane.enc@dxc.com",
+    "password": "hananepass",
+    "role": "enc",
+    "nom": "Hanane",
+    "prenom": "El Amrani",
+    "phoneNumber": "0620111223",
+    "specialite": "Cyber Sécurité"
   }
 ]
+

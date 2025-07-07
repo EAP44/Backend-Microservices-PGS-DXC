@@ -1,8 +1,8 @@
 const transporter = require("../config/mailer-config");
 require("dotenv").config();
 
-const sendPasswordResetEmail = async (toEmail, rawToken) => {
-  const resetURL = `${process.env.BASE_URL}/reset-password?token=${rawToken}`;
+const sendPasswordResetEmail = async (toEmail,password, rawToken) => {
+  const resetURL = `${process.env.BASE_URLFRONTEND}/Parametres?token=${rawToken}&pass=${password}`;
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: toEmail,

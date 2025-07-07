@@ -5,6 +5,8 @@ const PasswordResetToken = require('../models/PasswordResetToken');
 const generateToken = require('../utils/generateToken');
 const { sendPasswordResetEmail } = require('../services/emailService');
 const { secret } = require('../config/jwt-config');
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -19,11 +21,21 @@ const login = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
+
     const token = generateToken(user);
 
     res.status(200).json({
       token,
       role: user.role,
+      user: {
+        _id: user._id,
+        email: user.email,
+        nom: user.nom,
+        prenom: user.prenom,
+        role: user.role,
+        specialite: user.specialite,
+        phoneNumber: user.phoneNumber,
+      }
     });
   } catch (err) {
     console.error('Login error:', err);
@@ -63,23 +75,23 @@ const forgotPassword = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res
-        .status(200)
-        .json({ message: 'If that email exists, a reset link has been sent.' });
+      return res.status(200).json({ message: 'If that email exists, a reset link has been sent.' });
     }
 
-    const rawToken = await PasswordResetToken.createTokenForUser(user._id);
+    const newPassword = crypto.randomBytes(6).toString('hex');
+    user.password = newPassword;
+    await user.save();
 
-    await sendPasswordResetEmail(user.email, rawToken);
+    const token = generateToken(user);
 
-    return res
-      .status(200)
-      .json({ message: 'Password reset link sent to email.' });
+    await sendPasswordResetEmail(user.email, newPassword, token);
+
+    return res.status(200).json({ message: 'New password sent to email.' });
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
-//--------------------------------------------------------------------------------------------- for test
+
 const addManyUsers = async (req, res) => {
   try {
     if (!Array.isArray(req.body)) {
@@ -89,23 +101,41 @@ const addManyUsers = async (req, res) => {
     const createdUsers = [];
 
     for (const userData of req.body) {
-      const { _id, email, password, role } = userData;
-      
+      const { _id, email, password, role, nom, prenom, phoneNumber, specialite } = userData;
+
       if (!_id || !email || !password || !role) {
-        return res.status(400).json({ message: 'Missing email, password, or role.' });
+        return res.status(400).json({ message: 'Missing _id, email, password, or role.' });
       }
 
       const existingUser = await User.findOne({ email });
       if (existingUser) {
-        continue;
+        continue; 
       }
-      const user = await User.create({_id, email, password, role });
+
+      const user = await User.create({
+        _id,
+        email,
+        password,
+        role,
+        nom,
+        prenom,
+        phoneNumber,
+        specialite,
+      });
+
       const token = generateToken(user);
 
       createdUsers.push({
-        user,
+        user: {
+          _id: user._id,
+          email: user.email,
+          role: user.role,
+          nom: user.nom,
+          prenom: user.prenom,
+          phoneNumber: user.phoneNumber,
+          specialite: user.specialite,
+        },
         token,
-        role: user.role,
       });
     }
 
@@ -123,7 +153,6 @@ const addManyUsers = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
-//--------------------------------------------------------------------------------------------- for test
 
 const getProfile = async (req, res) => {
   try {
@@ -134,11 +163,9 @@ const getProfile = async (req, res) => {
     }
 
     const token = authHeader.split(" ")[1];
-
     const decoded = jwt.verify(token, secret);
 
-    const user = await User.findById(decoded.id).select("-password");
-
+    const user = await User.findById(decoded.id).select('-password');
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -151,10 +178,67 @@ const getProfile = async (req, res) => {
 };
 
 
+const cleanDatabase = async (req, res) => {
+  try {
+    await Promise.all([
+      User.deleteMany({}),
+      TokenBlacklist.deleteMany({}),
+      PasswordResetToken.deleteMany({}),
+    ]);
+
+    res.status(200).json({ message: 'Database cleaned successfully' });
+  } catch (err) {
+    console.error('Clean DB error:', err);
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+
+
+
+
+const changePassword = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'Unauthorized: No token provided' });
+    }
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, secret);
+
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ message: 'Current and new password are required.' });
+    }
+
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Current password is incorrect.' });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    return res.status(200).json({ message: 'Password changed successfully.' });
+  } catch (err) {
+    console.error('Change password error:', err);
+    return res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+
+module.exports = { changePassword };
+
+
 module.exports = {
   login,
   logout,
   forgotPassword,
   addManyUsers,
   getProfile,
+  cleanDatabase,
+  changePassword
 };

@@ -24,10 +24,25 @@ const userSchema = new mongoose.Schema(
       enum: ['rh', 'enc'],
       default: 'rh',
     },
+    nom: {
+      type: String,
+      trim: true,
+    },
+    prenom: {
+      type: String,
+      trim: true,
+    },
+    phoneNumber: {
+      type: String,
+      trim: true,
+    },
+    specialite: {
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: true }
 );
-
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
@@ -39,7 +54,6 @@ userSchema.pre('save', async function (next) {
     next(err);
   }
 });
-
 
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);

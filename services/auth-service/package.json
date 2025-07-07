@@ -7,11 +7,19 @@
     "start": "node src/main.js",
     "dev": "nodemon src/main.js"
   },
-  "keywords": ["auth", "microservice", "express", "mongodb", "jwt", "docker"],
+  "keywords": [
+    "auth",
+    "microservice",
+    "express",
+    "mongodb",
+    "jwt",
+    "docker"
+  ],
   "author": "Ayoub-Elaouadi",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "crypto": "1.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

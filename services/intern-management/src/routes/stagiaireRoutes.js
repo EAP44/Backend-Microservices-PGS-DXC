@@ -16,14 +16,17 @@ const {
   getDashboardStats,
   getPendingInterns,
   updateStagiaireStatus,
+  deleteAllEncadrants
 } = require('../controllers/stagiaireController');
-
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 const { authMiddleware } = require('../middlewares/authMiddleware');
+
 
 // === Stagiaire Routes ===
 router.get('/Stagiaires', getAllStagiaires);
 router.get('/Stagiaire/:id', getStagiaireById);
-router.post('/Stagiaire', createStagiaire);
+router.post('/Stagiaire',upload.fields([{ name: "CV", maxCount: 1 },{ name: "ConventionDeStage", maxCount: 1 },{ name: "DemandeDeStage", maxCount: 1 },]),createStagiaire);
 router.put('/Stagiaire/:id', updateStagiaire);
 router.delete('/Stagiaire/:id', deleteStagiaire);
 
@@ -34,6 +37,7 @@ router.get('/Stagiaires/list', stagiaires);
 
 // === Encadrant Routes ===
 router.get('/test/Encadrants', getAllEncadrants);
+router.delete('/test/Encadrants', deleteAllEncadrants);
 router.get('/test/Encadrant/:id', getEncadrantById);
 router.post('/test/Encadrant', createManyEncadrants);
 
