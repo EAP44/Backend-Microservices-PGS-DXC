@@ -9,6 +9,11 @@ exports.uploadFile = async (req, res) => {
     const { metadata } = req.body;
     const parsed = JSON.parse(metadata);
     const file = req.file;
+              //---------------------------------------------------------------
+
+console.log("metadata reçu :", parsed);
+console.log("fichier reçu :", file?.originalname, file?.mimetype);
+          //---------------------------------------------------------------
 
     if (!file) return res.status(400).json({ message: 'Aucun fichier fourni.' });
 

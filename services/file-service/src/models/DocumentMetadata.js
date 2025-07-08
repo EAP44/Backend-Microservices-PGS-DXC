@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const DocumentMetadataSchema = new mongoose.Schema({
-  stagiaireId: { type: mongoose.Schema.Types.ObjectId, ref: 'Stagiaire', required: true },
+  stagiaireId: { type: String, required: true },
   nomFichier: { type: String, required: true },
   type: { type: String },
   taille: { type: Number },
