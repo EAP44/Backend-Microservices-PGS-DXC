@@ -8,7 +8,8 @@ const DocumentMetadataSchema = new mongoose.Schema({
   cheminStorage: { type: String },
   uploadDate: { type: Date, default: Date.now },
   uploadedBy: { type: String },
-  tags: [{ type: String }]
+  categorie: { type: String, required: true },
+  tags: [{ type: String }],
 });
 
 module.exports = mongoose.model('DocumentMetadata', DocumentMetadataSchema);
