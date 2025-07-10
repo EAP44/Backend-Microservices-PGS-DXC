@@ -550,14 +550,14 @@ exports.downloadStatsExcel = async (req, res) => {
     const totalSupervisors = await Encadrant.countDocuments();
     const activeInternships = await Stagiaire.countDocuments({ status: "Complète", isDeleted: { $ne: true } });
     const pendingInterns = await Stagiaire.countDocuments({ status: "En attente", isDeleted: { $ne: true } });
+
     const stagiaires = await Stagiaire.find();
     const workbook = new ExcelJS.Workbook();
     const statsSheet = workbook.addWorksheet("Statistiques");
     const stagiairesSheet = workbook.addWorksheet("Stagiaires");
-
     statsSheet.columns = [
       { header: "Statistique", key: "label", width: 30 },
-      { header: "Valeur", key: "value", width: 15 },
+      { header: "Valeur", key: "value", width: 20 },
     ];
 
     statsSheet.addRows([
@@ -566,30 +566,32 @@ exports.downloadStatsExcel = async (req, res) => {
       { label: "Stages complétés", value: activeInternships },
       { label: "Stagiaires en attente", value: pendingInterns },
     ]);
-
     stagiairesSheet.columns = [
       { header: "Nom", key: "nom", width: 20 },
       { header: "Prénom", key: "prenom", width: 20 },
       { header: "Email", key: "email", width: 30 },
-      { header: "Statut", key: "status", width: 15 },
+      { header: "Statut", key: "status", width: 20 },
     ];
 
-    stagiaires.forEach((stagiaire) => {
-      stagiairesSheet.addRow({
-        nom: stagiaire.nom || "-",
-        prenom: stagiaire.prenom || "-",
-        email: stagiaire.email || "-",
-        status: stagiaire.status || "-",
+    if (stagiaires.length > 0) {
+      stagiaires.forEach((stagiaire) => {
+        stagiairesSheet.addRow({
+          nom: stagiaire.nom || "-",
+          prenom: stagiaire.prenom || "-",
+          email: stagiaire.email || "-",
+          status: stagiaire.status || "-",
+        });
       });
-    });
-
+    } else {
+      stagiairesSheet.addRow({ nom: "Aucun stagiaire trouvé." });
+    }
     res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     res.setHeader("Content-Disposition", "attachment; filename=dashboard-stats.xlsx");
 
     await workbook.xlsx.write(res);
     res.end();
   } catch (err) {
-    console.error("Excel export error:", err);
-    res.status(500).json({ message: "Erreur lors de la génération du fichier Excel.", error: err });
+    console.error("Erreur lors de la génération Excel :", err);
+    res.status(500).json({ message: "Erreur export Excel.", error: err });
   }
 };
