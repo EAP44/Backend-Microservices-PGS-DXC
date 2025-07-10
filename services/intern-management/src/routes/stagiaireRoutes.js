@@ -17,7 +17,7 @@ const {
   getPendingInterns,
   updateStagiaireStatus,
   deleteAllEncadrants,
-  downloadStatsPDF
+  downloadStatsPDF,downloadStatsExcel
 } = require("../controllers/stagiaireController");
 const multer = require("multer");
 const upload = multer();
